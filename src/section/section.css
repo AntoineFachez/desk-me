@@ -1,0 +1,32 @@
+.container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 92vh;
+  /* display: flex;
+  flex-direction: column; */
+  /* scroll-padding: 8vh; */
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  height: 92vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  scroll-snap-align: start;
+}
+.one {
+  background-color: rgb(139, 170, 122);
+}
+.two {
+  background-color: rgb(187, 186, 134);
+}
+.three {
+  background-color: rgb(192, 162, 192);
+}
+.four {
+  background-color: rgb(123, 137, 161);
+}
