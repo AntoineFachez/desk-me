@@ -155,7 +155,7 @@ export default function App() {
         {typeof weatherData.main != "undefined" ? (
           <Weather weatherData={weatherData} photos={photos} />
         ) : (
-          <div>{error}</div>
+          <div>there was an error: {error}</div>
         )}
 
         <button className="location_searcher" onClick={myLocation}>
