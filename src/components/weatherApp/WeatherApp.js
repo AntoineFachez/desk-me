@@ -29,10 +29,8 @@ export default function App() {
   }, [latUser, longUser, error]);
 
   useEffect(() => {
-    const fetchPost = async () => {
-      ifClickedSearch();
-      myLocation();
-    };
+    ifClickedSearch();
+    myLocation();
   }, []);
 
   function myLocation() {
@@ -157,7 +155,7 @@ export default function App() {
         {typeof weatherData.main != "undefined" ? (
           <Weather weatherData={weatherData} photos={photos} />
         ) : (
-          <div></div>
+          <div>{error}</div>
         )}
 
         <button className="location_searcher" onClick={myLocation}>
@@ -177,6 +175,7 @@ export default function App() {
           <button className="location_searcher" onClick={getForecast}>
             Forecast
           </button>
+          <li>{error}</li>
         </div>
       </div>
     </div>
