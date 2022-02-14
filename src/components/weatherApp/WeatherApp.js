@@ -1,6 +1,8 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-
+import { faPlane } from "@fortawesome/free-solid-svg-icons";
+import Draggable from "react-draggable";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Weather from "./components/weather";
 import Info from "./Info";
 import Forecast from "./components/forecast";
@@ -135,36 +137,22 @@ export default function App() {
       })
       .then((object) => {
         setForecastData(object.list);
-        // console.log(object);
-        // console.log(object.list.array.object.clouds);
-        // console.log(object.list[1].clouds);
-        // console.log(object.json.object.weather);
       })
       .catch((error) => console.log(error));
   }
   return (
-    <div className="noizeMe-section">
-      <div className="forecast">
-        {forecastData.map((list) => (
-          <div className="flex-forecast">
-            <li>clouds {list.clouds}</li>
-            {/* <li>day feels like {list.feels_like.day}</li> */}
-            {/* <li>night feels like {list.feels_like.night}</li> */}
-            <li>day temp {list.temp.day}</li>
-            <li>night temp {list.temp.night}</li>
-          </div>
-        ))}
-      </div>{" "}
-      <button className="forecast" onClick={getForecast}>
-        next days
-      </button>
-      <li>{error}</li>
-      {/* <Info /> */}
+    // <Draggable>
+    <div className="noizeMe">
       {/* <li className="dev">geoLoc Object</li>{" "}
       <p className="sub-title">
         You are @ {latUser}, {longUser}{" "}
       </p> */}
+
       <div className="weatherComponent">
+        <button className="forecast" onClick={getForecast}>
+          next days
+        </button>
+        <li>{error}</li>
         {typeof weatherData.main != "undefined" ? (
           <Weather
             weatherData={weatherData}
@@ -173,11 +161,14 @@ export default function App() {
             ifClickedSearch={ifClickedSearch}
             setLocations={setLocations}
             locations={locations}
+            getForecast={getForecast}
+            forecastData={forecastData}
           />
         ) : (
           <div>there was an error: {error}</div>
         )}
       </div>
     </div>
+    // </Draggable>
   );
 }

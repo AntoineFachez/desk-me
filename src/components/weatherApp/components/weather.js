@@ -11,13 +11,16 @@ import {
   faSun,
   faSmog,
   faLocationDot,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getData } from "../WeatherApp";
+// import { forecastData } from "../WeatherApp";
+import Forecast from "./forecast";
 
 export default function weather({
   weatherData,
+  forecastData,
   photos,
   setMyLocation,
   ifClickedSearch,
@@ -57,60 +60,59 @@ export default function weather({
     <div className="main">
       {/* <p>hello</p> */}
       <div className="overlay-container">
-        <div className="text-layer">
-          <div className="">
-            <Menu
-              className="menu"
-              style={
-                {
-                  // fontSize: 45,
-                }
+        <div className="">
+          <Menu
+            className="menu"
+            style={
+              {
+                // fontSize: 45,
               }
-            >
-              <div className="btn-close">
-                <Button
-                  inverted
-                  color="blue"
-                  circular
-                  icon="refresh"
-                  onClick={refresh}
-                />
-              </div>
-              <div className="weather">
-                <div className="weather-icon">{weatherIcon}</div>
-                <div className="loc-temp">
-                  {Math.trunc(weatherData.main.temp)} &deg;
-                </div>
-                <div className="weather-text">
-                  {/* {weatherData.weather[0].main} */}
-                </div>
-              </div>
-              <FontAwesomeIcon
-                icon={faLocationDot}
-                className="location-dot"
-                onClick={setMyLocation}
-                icon={faLocationDot}
+            }
+          >
+            <div className="btn-close">
+              <Button
+                inverted
+                color="blue"
+                circular
+                icon="refresh"
+                onClick={refresh}
               />
-            </Menu>
-          </div>
+            </div>
+            <div className="weather">
+              <div className="weather-icon">{weatherIcon}</div>
+              <div className="loc-temp">
+                {Math.trunc(weatherData.main.temp)} &deg;
+              </div>
+              <div className="weather-text">
+                {/* {weatherData.weather[0].main} */}
+              </div>
+            </div>{" "}
+            <div className="search">
+              <FontAwesomeIcon
+                icon={faSearch}
+                className="search"
+                onClick={ifClickedSearch}
+              />
+            </div>{" "}
+            <FontAwesomeIcon
+              icon={faLocationDot}
+              className="location-dot"
+              onClick={setMyLocation}
+            />{" "}
+          </Menu>
+          <input
+            className="location_input"
+            type="text"
+            value={locations}
+            onChange={(e) => setLocations(e.target.value)}
+            placeholder="enter location..."
+          />
+        </div>
+        <div className="text-layer">
           <p className="day">
             {moment().format("dddd")}, <span>{moment().format("LL")}</span>
           </p>
-          <p className="header-text">
-            {weatherData.name}
-            <div className="search">
-              <input
-                type="text"
-                value={locations}
-                onChange={(e) => setLocations(e.target.value)}
-                placeholder="Enter location"
-                className="location_input"
-              />
-              <button className="location_searcher" onClick={ifClickedSearch}>
-                Search
-              </button>
-            </div>{" "}
-          </p>
+          <p className="header-text">{weatherData.name}</p>
           <div className="flex">
             <div className="block-left">
               <p className="humidity">humidity:</p>
@@ -132,6 +134,7 @@ export default function weather({
             </div>
           </div>
         </div>
+        <Forecast forecastData={forecastData} />
       </div>
       {/* <div style={{ backgroundImage: `url(${photos})` }}></div> */}
       {/* <div

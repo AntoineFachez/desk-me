@@ -1,30 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Recursive&display=swap");
-.search {
-  display: flex;
-  flex-direction: row;
-}
-.location_searcher {
-  z-index: 0;
-  order: 10;
-  display: flex;
-  flex-direction: row;
-  padding: 8px;
-  color: white;
-  background-color: #333;
-  border: none;
-  border-radius: 5px;
-  /* margin-left: 5px; */
-}
-.location_input {
-  z-index: 0;
-  order: 10;
-  display: flex;
-  flex-direction: row;
-  padding: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  color: #333;
-  border-radius: 5px;
-}
+
 .main {
   margin: 2vw;
   position: relative;
@@ -35,63 +10,45 @@
   min-width: 22rem;
   min-height: 20rem;
   display: flex;
-
-  justify-content: space-around;
-  /* flex-direction: column; */
-  /* flex-wrap: wrap; */
-  /* align-items: start; */
+  justify-content: center;
   overflow: hidden;
   border-radius: 4vw;
-  /* background-color: #01579b; */
 }
 
 .img {
   z-index: 0;
   order: 5;
-  min-width: 29.8rem;
-  /* display: flex; */
-  flex-grow: 1;
-  /* user-zoom: 1; */
+  flex-shrink: 1;
   position: absolute;
-  max-width: 150vw;
-  object-fit: cover;
+  max-width: 135vw;
+  object-fit: contain;
 }
 .overlay-container {
   z-index: 10;
   order: 2;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 20rem;
-  /* flex: auto; */
-  /* padding: 1rem 1rem 1rem 1rem; */
+  padding: 0.3rem 0.3rem 0.3rem 0.3rem;
   opacity: 1;
-  /* background-color: rgb(117, 116, 117); */
 }
 .overlay-container:hover {
-  /* z-index: 20; */
-
-  /* width: fit-content; */
-  /* opacity: 0.8; */
 }
 .menu {
   order: 0;
-  margin-bottom: 1rem;
+  margin: 0.5rem 0 0rem 0;
   display: flex;
-  justify-content: space-around;
+  width: 20.8rem;
+  width: auto;
+  justify-content: space-between;
   min-width: fit-content;
   height: fit-content;
-  width: 25rem;
-  background-color: aqua;
-  /* background-color: #333; */
 }
 
 .btn-close {
+  align-self: start;
   z-index: 10;
 
-  /* display: flex; */
-  /* flex-direction: column; */
-
-  /* margin: 1.1rem 0 0 1.1rem; */
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 2rem;
@@ -106,11 +63,12 @@
 }
 .weather {
   order: 3;
+  margin-left: 1rem;
   display: flex;
   align-items: center;
 
   height: 2rem;
-  background-color: blue;
+  /* background-color: blue; */
   align-self: center;
 }
 .weather-icon {
@@ -122,127 +80,96 @@
   /* background-color: rgb(98, 161, 26); */
 }
 .loc-temp {
-  /* order: 3; */
-  display: flex;
   margin-left: 1rem;
-  /* justify-content: start; */
-  align-self: start;
   font-size: 1.5rem;
   font-weight: 600;
   /* background-color: rgb(243, 104, 104); */
 }
-.location-dot {
+.search {
   order: 4;
-  /* margin-left: 1rem; */
   display: flex;
-  font-size: 1.7rem;
-  /* align-self: center; */
-  justify-content: space-around;
-  width: 3rem;
-  background-color: rgb(46, 175, 46);
+  flex-direction: column;
+}
+.location-dot {
+  order: 6;
+  font-size: 1.9rem;
   align-self: center;
+}
+.location_input {
+  z-index: 0;
+  order: 5;
+  margin: 0.5rem 0 1rem 13.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: start;
+  padding: 0.5rem;
+  width: 6rem;
+  height: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #333;
+  border-radius: 5px;
+  font-size: 0.8rem;
   /* background-color: aqua; */
 }
 
 .text-layer {
-  z-index: 150;
-  order: 2;
-  display: flex;
-  width: 20rem;
-  flex-direction: column;
   white-space: pre-wrap;
-  padding: 0rem 0rem 0rem 0rem;
-  /* background-color: #333; */
-  /* background-color: aqua; */
+
+  padding: 0rem 0rem 0rem 2rem;
 }
 .header-text {
-  /* order: 1; */
-  /* margin: 1vw; */
   order: 0;
-  flex-grow: 4;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  max-height: 10vh;
+  text-align: left;
   z-index: 10;
   color: rgb(255, 255, 255);
   font-size: 2rem;
-  /* height: min-content; */
-
-  /* background-color: aqua; */
-  /* width: 50vw; */
 }
 
 .day {
-  display: flex;
   font-size: 1rem;
-  align-items: flex-start;
   text-align: left;
-  /* display: flex;
-  flex-direction: row; */
 }
-.body {
-  /* margin-top: 4vh; */
-  /* position: absolute; */
-  /* display: inline; */
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  /* flex-direction: row; */
-  /* align-items: start; */
-}
+
 .flex {
   display: flex;
-  flex-direction: row;
 }
 
 .temp {
   z-index: 10;
-  /* padding: 0 8vw 0 8vw; */
+
   color: whitesmoke;
   font-family: "Recursive", sans-serif;
-  font-size: 18px;
+  font-size: 1rem;
 }
 
 .block-left {
   z-index: 10;
-  /* margin: 1rem; */
-  /* padding: 0 8vw 0 8vw; */
-  display: flex;
-  flex-direction: column;
   color: whitesmoke;
   text-align: left;
   font-family: "Recursive", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
 }
 .block-right {
   z-index: 10;
   margin-left: 1rem;
-  /* margin: 1rem; */
-  /* padding: 0 8vw 0 8vw; */
-  display: flex;
-  flex-direction: column;
   color: whitesmoke;
   text-align: left;
   font-family: "Recursive", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
 }
 .humidity,
 .sunrise-sunset {
   z-index: 10;
-  /* margin: 1rem; */
-  /* padding: 0 8vw 0 8vw; */
-  display: flex;
-  flex-direction: column;
   color: whitesmoke;
   text-align: left;
   font-family: "Recursive", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .forecast {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border-radius: 20px;
   background-color: #01579b;
   color: whitesmoke;
@@ -255,6 +182,6 @@
   display: flex;
   list-style: none;
   text-align: left;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
 }
