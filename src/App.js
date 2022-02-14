@@ -1,7 +1,7 @@
 import logo from "./images/p00l-glow-square.png";
 import Section from "./section/Section";
 import "./App.css";
-import Nav from "./components/Nav";
+import Nav from "./nav/Nav";
 import About from "./pages/About";
 import Shop from "./pages/Shop";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";

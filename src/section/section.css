@@ -19,8 +19,7 @@ section {
   scroll-snap-align: start;
 }
 .one {
-  /* background-color: rgb(139, 170, 122); */
-  background-color: rgb(48, 95, 22);
+  background-color: rgb(139, 170, 122);
 }
 .two {
   background-color: rgb(187, 186, 134);

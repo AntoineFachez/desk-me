@@ -19,8 +19,14 @@ export default function App() {
   const [error, setError] = useState(null);
 
   const OPENWEATHER_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
+  const OPENWEATHER_URL = process.env.REACT_APP_OPENWEATHER_URL;
   const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_API_KEY;
+  const UNSPLASH_URL = process.env.REACT_APP_UNSPLASH_URL;
 
+  // console.log(
+  //   `${UNSPLASH_URL}/search/photos?query=${locations}&client_id=${UNSPLASH_KEY}`
+  // );
+  // console.log(UNSPLASH_URL);
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
       setLatUser(position.coords.latitude);
@@ -30,13 +36,16 @@ export default function App() {
 
   useEffect(() => {
     ifClickedSearch();
-    myLocation();
+    setMyLocation();
   }, []);
 
-  function myLocation() {
+  const randomPic = Math.floor(Math.random() * 10);
+
+  function setMyLocation() {
     setLocations(locationUser);
+
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${locations}&APPID=${OPENWEATHER_KEY}&units=metric`
+      `${OPENWEATHER_URL}/weather?q=${locations}&APPID=${OPENWEATHER_KEY}&units=metric`
     )
       .then((res) => {
         if (res.ok) {
@@ -54,8 +63,9 @@ export default function App() {
         // console.log(setWeatherData);
       })
       .catch((error) => console.log(error));
+
     fetch(
-      `https://api.unsplash.com/search/photos?query=${locations}&client_id=${UNSPLASH_KEY}`
+      `${UNSPLASH_URL}/search/photos?query=${locations}&client_id=${UNSPLASH_KEY}`
     )
       .then((res) => {
         if (res.ok) {
@@ -65,15 +75,15 @@ export default function App() {
         }
       })
       .then((data) => {
-        console.log(data);
-        setPhotos(data?.results[0]?.urls?.raw);
+        // console.log(data);
+        setPhotos(data?.results[randomPic]?.urls?.raw);
       })
       .catch((error) => console.log(error));
   }
 
   function ifClickedSearch() {
     fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${locations}&APPID=${OPENWEATHER_KEY}&units=metric`
+      `${OPENWEATHER_URL}/weather?q=${locations}&APPID=${OPENWEATHER_KEY}&units=metric`
     )
       .then((res) => {
         if (res.ok) {
@@ -92,7 +102,7 @@ export default function App() {
       .catch((error) => console.log(error));
 
     fetch(
-      `https://api.unsplash.com/search/photos?query=${locations}&client_id=${UNSPLASH_KEY}`
+      `${UNSPLASH_URL}/search/photos?query=${locations}&client_id=${UNSPLASH_KEY}`
     )
       .then((res) => {
         if (res.ok) {
@@ -102,7 +112,7 @@ export default function App() {
         }
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setPhotos(data?.results[0]?.urls?.raw);
       })
       .catch((error) => console.log(error));
@@ -110,8 +120,7 @@ export default function App() {
 
   function getForecast() {
     fetch(
-      // `http://api.openweathermap.org/data/2.5/weather?q=${locations}&APPID=${OPENWEATHER_KEY}&units=metric`
-      `http://api.openweathermap.org/data/2.5/forecast/daily?lat=${latUser}&lon=${longUser}&cnt=${cnt}&appid=${OPENWEATHER_KEY}&units=metric`
+      `${OPENWEATHER_URL}/forecast/daily?lat=${latUser}&lon=${longUser}&cnt=${cnt}&appid=${OPENWEATHER_KEY}&units=metric`
     )
       .then((res) => {
         if (res.ok) {
@@ -128,7 +137,7 @@ export default function App() {
         setForecastData(object.list);
         // console.log(object);
         // console.log(object.list.array.object.clouds);
-        console.log(object.list[1].clouds);
+        // console.log(object.list[1].clouds);
         // console.log(object.json.object.weather);
       })
       .catch((error) => console.log(error));
@@ -145,7 +154,11 @@ export default function App() {
             <li>night temp {list.temp.night}</li>
           </div>
         ))}
-      </div>
+      </div>{" "}
+      <button className="forecast" onClick={getForecast}>
+        next days
+      </button>
+      <li>{error}</li>
       {/* <Info /> */}
       {/* <li className="dev">geoLoc Object</li>{" "}
       <p className="sub-title">
@@ -153,30 +166,17 @@ export default function App() {
       </p> */}
       <div className="weatherComponent">
         {typeof weatherData.main != "undefined" ? (
-          <Weather weatherData={weatherData} photos={photos} />
+          <Weather
+            weatherData={weatherData}
+            photos={photos}
+            setMyLocation={setMyLocation}
+            ifClickedSearch={ifClickedSearch}
+            setLocations={setLocations}
+            locations={locations}
+          />
         ) : (
           <div>there was an error: {error}</div>
         )}
-
-        <button className="location_searcher" onClick={myLocation}>
-          My Location
-        </button>
-        <div className="search">
-          <input
-            type="text"
-            value={locations}
-            onChange={(e) => setLocations(e.target.value)}
-            placeholder="Enter location"
-            className="location_input"
-          />
-          <button className="location_searcher" onClick={ifClickedSearch}>
-            Search
-          </button>
-          <button className="location_searcher" onClick={getForecast}>
-            Forecast
-          </button>
-          <li>{error}</li>
-        </div>
       </div>
     </div>
   );
