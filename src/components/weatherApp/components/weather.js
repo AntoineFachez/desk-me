@@ -26,6 +26,7 @@ export default function weather({
   ifClickedSearch,
   setLocations,
   locations,
+  getForecast,
 }) {
   const Menu = styled.div`
     color: whitesmoke;
@@ -100,15 +101,20 @@ export default function weather({
               onClick={setMyLocation}
             />{" "}
           </Menu>
-          <input
-            className="location_input"
-            type="text"
-            value={locations}
-            onChange={(e) => setLocations(e.target.value)}
-            placeholder="enter location..."
-          />
+          <div className="sub-menu">
+            <input
+              className="location_input"
+              type="text"
+              value={locations}
+              onChange={(e) => setLocations(e.target.value)}
+              placeholder="enter location..."
+            />
+          </div>
         </div>
         <div className="text-layer">
+          <button className="btn-forecast" onClick={getForecast}>
+            forcast
+          </button>
           <p className="day">
             {moment().format("dddd")}, <span>{moment().format("LL")}</span>
           </p>
@@ -134,6 +140,7 @@ export default function weather({
             </div>
           </div>
         </div>
+
         <Forecast forecastData={forecastData} />
       </div>
       {/* <div style={{ backgroundImage: `url(${photos})` }}></div> */}

@@ -1,18 +1,20 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import { faPlane } from "@fortawesome/free-solid-svg-icons";
-import Draggable from "react-draggable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Weather from "./components/weather";
 import Info from "./Info";
 import Forecast from "./components/forecast";
 import Shop from "../../pages/Shop";
+import { DndProvider } from "react-dnd";
+// import Draggable from "react-draggable";
 
 export default function App() {
   const [latUser, setLatUser] = useState([]);
   const [longUser, setLongUser] = useState([]);
-  const [locationUser, setLocationUser] = useState("Hamburg");
+  const [locationUser, setLocationUser] = useState();
   const [locations, setLocations] = useState("london");
+  const [travelInfo, setTravelInfo] = useState([]);
 
   const [weatherData, setWeatherData] = useState({});
   const [forecastData, setForecastData] = useState([]);
@@ -24,6 +26,8 @@ export default function App() {
   const OPENWEATHER_URL = process.env.REACT_APP_OPENWEATHER_URL;
   const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_API_KEY;
   const UNSPLASH_URL = process.env.REACT_APP_UNSPLASH_URL;
+  const AMADEUS_KEY = process.env.REACT_APP_AMADEUS_KEY;
+  const AMADEUS_URL = process.env.REACT_APP_AMADEUS_URL;
 
   // console.log(
   //   `${UNSPLASH_URL}/search/photos?query=${locations}&client_id=${UNSPLASH_KEY}`
@@ -139,36 +143,53 @@ export default function App() {
         setForecastData(object.list);
       })
       .catch((error) => console.log(error));
+
+    function travelInfo() {
+      fetch(
+        `${AMADEUS_URL}/forecast/daily?lat=${latUser}&lon=${longUser}&cnt=${cnt}&appid=${AMADEUS_KEY}&units=metric`
+      )
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            if (res.status === 404) {
+              return alert("Oops, there seems to be an error!(wrong location)");
+            }
+            alert("Oops, there seems to be an error!");
+            throw new Error("You have an error");
+          }
+        })
+        .then((object) => {
+          setForecastData(object.list);
+        })
+        .catch((error) => console.log(error));
+    }
   }
+
   return (
     // <Draggable>
-    <div className="noizeMe">
-      {/* <li className="dev">geoLoc Object</li>{" "}
-      <p className="sub-title">
-        You are @ {latUser}, {longUser}{" "}
-      </p> */}
 
-      <div className="weatherComponent">
-        <button className="forecast" onClick={getForecast}>
-          next days
-        </button>
-        <li>{error}</li>
-        {typeof weatherData.main != "undefined" ? (
-          <Weather
-            weatherData={weatherData}
-            photos={photos}
-            setMyLocation={setMyLocation}
-            ifClickedSearch={ifClickedSearch}
-            setLocations={setLocations}
-            locations={locations}
-            getForecast={getForecast}
-            forecastData={forecastData}
-          />
-        ) : (
-          <div>there was an error: {error}</div>
-        )}
-      </div>
+    <div className="weatherComponent">
+      <li>{error}</li>
+      {typeof weatherData.main != "undefined" ? (
+        <Weather
+          weatherData={weatherData}
+          photos={photos}
+          setMyLocation={setMyLocation}
+          ifClickedSearch={ifClickedSearch}
+          setLocations={setLocations}
+          locations={locations}
+          getForecast={getForecast}
+          forecastData={forecastData}
+        />
+      ) : (
+        <div>there was an error: {error}</div>
+      )}
     </div>
-    // </Draggable>
   );
 }
+
+/* <li className="dev">geoLoc Object</li>{" "}
+      <p className="sub-title">
+        You are @ {latUser}, {longUser}{" "}
+      </p> */

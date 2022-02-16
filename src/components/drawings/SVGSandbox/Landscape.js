@@ -4,7 +4,6 @@ import Draggable from "react-draggable";
 const SVGSandbox = () => {
   return (
     <div className="canvas">
-      Hello from SVGSandbox
       <svg className="viewbox" viewBox="0 0 300 300">
         <g fill="">
           <Draggable>
@@ -52,6 +51,7 @@ const SVGSandbox = () => {
           stroke="black"
         /> */}
       </svg>
+      <li>Hello from SVGSandbox</li>
     </div>
   );
 };

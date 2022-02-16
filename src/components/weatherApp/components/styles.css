@@ -36,12 +36,12 @@
 }
 .menu {
   order: 0;
-  margin: 0.5rem 0 0rem 0;
+  margin: 0.5rem 0rem 0.5rem 0;
   display: flex;
-  width: 20.8rem;
-  width: auto;
+  /* width: 20.8rem; */
+  /* width: auto; */
   justify-content: space-between;
-  min-width: fit-content;
+  /* min-width: fit-content; */
   height: fit-content;
 }
 
@@ -95,19 +95,46 @@
   font-size: 1.9rem;
   align-self: center;
 }
+.sub-menu {
+  display: flex;
+  flex-direction: row;
+}
 .location_input {
   z-index: 0;
   order: 5;
-  margin: 0.5rem 0 1rem 13.2rem;
+  margin: 0rem 0 2rem 13.2rem;
+  display: flex;
+  /* flex-direction: row; */
+  /* align-self: end;
+  justify-self: end; */
+  padding: 0.5rem;
+  width: 6.2rem;
+  height: 1.5rem;
+  /* border: 1px solid rgba(255, 255, 255, 0.6); */
+  border-style: none;
+  color: white;
+  background-color: rgba(51, 51, 51, 0.164);
+  border-radius: 5px;
+  font-size: 0.8rem;
+  /* background-color: aqua; */
+}
+.btn-forecast {
   display: flex;
   flex-direction: column;
-  align-items: end;
-  justify-content: start;
-  padding: 0.5rem;
-  width: 6rem;
+  position: abo;
+  margin-bottom: 1rem;
+
+  text-align: center;
+  vertical-align: middle;
+  width: fit-content;
+  justify-content: center;
+  /* padding: 0.5rem; */
+  width: 6.2rem;
   height: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  color: #333;
+  /* border: 1px solid rgba(255, 255, 255, 0.6); */
+  border-style: none;
+  color: white;
+  background-color: rgba(51, 51, 51, 0.164);
   border-radius: 5px;
   font-size: 0.8rem;
   /* background-color: aqua; */
@@ -115,8 +142,17 @@
 
 .text-layer {
   white-space: pre-wrap;
-
-  padding: 0rem 0rem 0rem 2rem;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  background-color: rgba(51, 51, 51, 0.15);
+  padding: 1rem 0rem 3rem 3rem;
+  border-radius: 1rem;
+}
+.day {
+  font-size: 1rem;
+  text-align: left;
 }
 .header-text {
   order: 0;
@@ -124,11 +160,6 @@
   z-index: 10;
   color: rgb(255, 255, 255);
   font-size: 2rem;
-}
-
-.day {
-  font-size: 1rem;
-  text-align: left;
 }
 
 .flex {
@@ -164,17 +195,6 @@
   color: whitesmoke;
   text-align: left;
   font-family: "Recursive", sans-serif;
-  font-size: 1rem;
-}
-
-.forecast {
-  display: flex;
-  flex-direction: column;
-  border-radius: 20px;
-  background-color: #01579b;
-  color: whitesmoke;
-  padding: 1vw 4vw 1vw 4vw;
-  margin: 10px;
   font-size: 1rem;
 }
 

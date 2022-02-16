@@ -1,5 +1,5 @@
 import React from "react";
-import { faPlane } from "@fortawesome/free-solid-svg-icons";
+import { faTrain } from "@fortawesome/free-solid-svg-icons";
 import Draggable from "react-draggable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./travel-app.css";
@@ -9,12 +9,13 @@ import "./travel-app.css";
 //   clientId: process.env.REACT_APP_AMADEUS_CLIENT_ID,
 //   clientSecret: process.env.REACT_APP_AMADEUS_CLIENT_SECRET,
 // });
-export default function TravelApp() {
+
+export default function TravelByTrain() {
   return (
     <Draggable>
-      <div className="trave-app">
+      <div className="travel-app">
         <div>
-          <FontAwesomeIcon className="plane" icon={faPlane} />
+          <FontAwesomeIcon className="train" icon={faTrain} />
         </div>
       </div>
     </Draggable>

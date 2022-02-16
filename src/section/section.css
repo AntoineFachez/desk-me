@@ -6,9 +6,15 @@
   flex-direction: column; */
   /* scroll-padding: 8vh; */
 }
-
+/* .tool {
+  z-index: 50;
+}
+.widget {
+  z-index: 0;
+} */
 section {
   display: flex;
+  padding-bottom: 8vh;
   flex-direction: column;
   height: 92vh;
   display: flex;

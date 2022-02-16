@@ -1,3 +1,13 @@
+.travelApp {
+  z-index: 50;
+  width: 100vw;
+  height: 100vh;
+}
 .plane {
+  position: relative;
   font-size: 2rem;
+}
+
+.flex-1 {
+  flex: 1;
 }
