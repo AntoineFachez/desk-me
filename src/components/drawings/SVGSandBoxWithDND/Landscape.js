@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./sandbox.css";
-import Draggable from "react-draggable";
+
 import {
   faCloud,
   faBolt,
@@ -17,31 +16,28 @@ import Sun from "./Sun";
 import LargeCloud from "./LargeCloud";
 import SmallCloud from "./SmallCloud";
 import MiddleCloud from "./MiddleCloud";
-import Rect from "./react-drag";
+
+import "./sandbox.css";
 
 const SVGSandbox = () => {
-  const rSun = 50;
+  var today = new Date();
+  const time =
+    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  // const hour = today.getHours();
+  const hour = 12;
+  // const minutes = today.getMinutes();
+  const seconds = today.getSeconds();
+  const rSun = "40";
+  const cxSun = "50";
+  const cySun = "240";
   const rxLarge = "60";
   const ryLarge = "10";
-  const rxMiddle = "30";
-  const ryMiddle = "16";
+  const rxMiddle = "70";
+  const ryMiddle = "66";
   const rxSmall = "15";
   const rySmall = "10";
+  console.log(hour * 20);
 
-  // const handleDrag = (e) => console.log(e);
-  const pull_data = (data) => {
-    console.log(data); // LOGS DATA FROM CHILD (My name is Dean Winchester... &)
-  };
-  const handleDrag = (e, ui) => {
-    const { x, y } = this.state.deltaPosition;
-    this.setState({
-      deltaPosition: {
-        x: x + ui.deltaX,
-        y: y + ui.deltaY,
-      },
-    });
-    console.log(x, y);
-  };
   return (
     <div className="">
       <svg className="viewbox">
@@ -55,15 +51,16 @@ const SVGSandbox = () => {
                 </div>
               </div>
             </Draggable> */}
-          <Draggable>
-            <Sun r={rSun} onChange={pull_data} />
-          </Draggable>
+
+          <Sun cxSun={cxSun} cySun={cySun} rSun={rSun} />
+
           <MiddleCloud rxMiddle={rxMiddle} ryMiddle={ryMiddle} />
+          {/* <circle cx="50" cy="50" r="50" /> */}
           <polyline className="polyline2" points="0,300 95 160 200,300" />
           <LargeCloud rxLarge={rxLarge} ryLarge={ryLarge} />
           <polyline className="polyline1" points="-40,300 25 200 90,300" />
           <polyline className="polyline3" points="40,300 150 190 230,300" />
-          <SmallCloud rxSmall={rxSmall} rySmall={rySmall} onDrag={pull_data} />
+          <SmallCloud rxSmall={rxSmall} rySmall={rySmall} />
           <polyline className="polyline4" points="60,300 220 240 320,300" />
         </g>
       </svg>

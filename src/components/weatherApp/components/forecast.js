@@ -21,7 +21,7 @@ export default function Forecast({ forecastData }) {
 
   // const { forecast } = props;
 
-  console.log("Forecast", forecastData[0]);
+  // console.log("Forecast", forecastData[0]);
 
   const results = forecastData.map((object, index) => {
     let weatherIcon = null;

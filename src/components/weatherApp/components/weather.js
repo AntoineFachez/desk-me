@@ -13,8 +13,8 @@ import {
   faLocationDot,
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styled from "styled-components";
 // import { forecastData } from "../WeatherApp";
 import Forecast from "./forecast";
 

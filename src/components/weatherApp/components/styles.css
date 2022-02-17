@@ -2,12 +2,13 @@
 
 .main {
   margin: 2vw;
+  margin-top: 5vh;
   position: relative;
-  max-width: 50vw;
-  max-height: 35rem;
-  height: 25rem;
+  max-width: 20vw;
+  max-height: 20vh;
+  height: 20vh;
   width: fit-content;
-  min-width: 22rem;
+  min-width: 60vw;
   min-height: 20rem;
   display: flex;
   justify-content: center;
@@ -28,7 +29,8 @@
   order: 2;
   display: flex;
   flex-direction: column;
-  width: 20rem;
+  /* width: 20rem; */
+  width: inherit;
   padding: 0.3rem 0.3rem 0.3rem 0.3rem;
   opacity: 1;
 }
@@ -37,12 +39,15 @@
 .menu {
   order: 0;
   margin: 0.5rem 0rem 0.5rem 0;
+  flex-grow: 1;
   display: flex;
-  /* width: 20.8rem; */
-  /* width: auto; */
+  width: 100%;
+  width: fit-content;
+  min-width: 55vw;
   justify-content: space-between;
   /* min-width: fit-content; */
   height: fit-content;
+  /* background-color: aqua; */
 }
 
 .btn-close {
@@ -199,9 +204,12 @@
 }
 
 .flex-forecast {
+  /* position: absolute; */
   display: flex;
   list-style: none;
   text-align: left;
   flex-direction: row;
+  min-height: 20vh;
   justify-content: space-between;
+  background-color: rgba(51, 51, 51, 0.589);
 }

@@ -4,22 +4,17 @@ import "./App.css";
 import Nav from "./nav/Nav";
 import About from "./pages/About";
 import Shop from "./pages/Shop";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import Router from "./nav/Router";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Nav />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/shop" element={<Shop />} />
-        </Routes>
-      </div>
-    </Router>
+    <DndProvider backend={HTML5Backend}>
+      <Router />;
+    </DndProvider>
   );
 }
 
