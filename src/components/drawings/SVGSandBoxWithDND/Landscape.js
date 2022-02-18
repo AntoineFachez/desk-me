@@ -18,6 +18,7 @@ import SmallCloud from "./SmallCloud";
 import MiddleCloud from "./MiddleCloud";
 
 import "./sandbox.css";
+import Sky from "./Sky";
 
 const SVGSandbox = () => {
   var today = new Date();
@@ -28,7 +29,7 @@ const SVGSandbox = () => {
   // const minutes = today.getMinutes();
   const seconds = today.getSeconds();
   const rSun = "40";
-  const cxSun = "50";
+  const cxSun = "20";
   const cySun = "240";
   const rxLarge = "60";
   const ryLarge = "10";
@@ -36,26 +37,19 @@ const SVGSandbox = () => {
   const ryMiddle = "66";
   const rxSmall = "15";
   const rySmall = "10";
-  console.log(hour * 20);
+  // console.log(hour * 20);
+  const skyStyle = {
+    backgroundImage: "linear-gradient(rgb(117, 65, 236), rgb(194, 246, 243))",
+  };
 
   return (
-    <div className="">
-      <svg className="viewbox">
-        <g fill="canvas">
-          {/* <Draggable onDrag={this.handleDrag} {...dragHandlers}>
-              <div className="box">
-                <div>I track my deltas</div>
-                <div>
-                  x: {deltaPosition.x.toFixed(0)}, y:{" "}
-                  {deltaPosition.y.toFixed(0)}
-                </div>
-              </div>
-            </Draggable> */}
-
+    <div>
+      {/* <Sky className="sky" /> */}
+      <svg className="viewbox" style={skyStyle}>
+        <g className="">
+          <Sky className="" />
           <Sun cxSun={cxSun} cySun={cySun} rSun={rSun} />
-
           <MiddleCloud rxMiddle={rxMiddle} ryMiddle={ryMiddle} />
-          {/* <circle cx="50" cy="50" r="50" /> */}
           <polyline className="polyline2" points="0,300 95 160 200,300" />
           <LargeCloud rxLarge={rxLarge} ryLarge={ryLarge} />
           <polyline className="polyline1" points="-40,300 25 200 90,300" />
